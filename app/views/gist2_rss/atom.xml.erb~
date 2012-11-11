@@ -1,0 +1,27 @@
+<h1>gist2RSS plain</h1>
+
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Example Feed</title>
+ <link href="http://gist.github.com/taktamur/"/>
+ <updated><%= @json[0]['created_at'] %></updated><!-- 更新日=最新のgist -->
+ <author>
+   <name>taktamur</name> <!-- アカウント名 -->
+ </author>
+
+<% @json.each do |j| %>
+ <entry>
+   <title><%= j['description'] %></title>
+   <link href="<%= j['html_url'] %>"/>
+   <updated><%= j['created_at'] %></updated> <!-- 更新日 -->
+   <summary><%= j['description'] %></summary> 
+   <content><%= @contents[j['id']]['raw'] %></content>
+ </entry>
+<% end %>
+
+</feed>
+
+<!--
+<%= JSON.pretty_generate(@json) %>
+-->

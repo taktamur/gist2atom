@@ -1,0 +1,17 @@
+# -*- coding: utf-8 -*-
+class Gist2RssController < ApplicationController
+  require 'open-uri'
+  require 'json'
+  def plain
+    gistsJsonStr = URI.parse('https://api.github.com/users/taktamur/gists').read;
+    @gistsJson = JSON.parse(gistsJsonStr)
+    @contents = Hash::new
+    @gistsJson.each do |j|
+      content = Hash::new
+      content['raw'] = URI.parse(j['files'][ j['files'].keys[0] ]['raw_url']).read;
+      @contents[j['id']] = content
+    end
+    
+    render "gist2_rss/atom.xml.erb"
+  end
+end
