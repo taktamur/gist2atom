@@ -12,4 +12,25 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
-/tmp
+#/tmp
+
+
+# add github's rails gitignore
+#  https://github.com/github/gitignore/blob/master/Rails.gitignore
+*.rbc
+*.sassc
+.sass-cache
+capybara-*.html
+.rspec
+/.bundle
+/vendor/bundle
+/log/*
+/tmp/*
+/db/*.sqlite3
+/public/system/*
+/coverage/
+/spec/tmp/*
+**.orig
+rerun.txt
+pickle-email-*.html
+
